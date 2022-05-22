@@ -42,7 +42,7 @@ function App() {
         label="Blockchain Fees"
         value={chain}
         onChange={(val: string) => setChain(val)}
-        data={["Custom","Cosmos", "Sentinel", "Terra"]}
+        data={["Custom","Cosmos", "Sentinel"]}
       />
 
       <NumberInput
