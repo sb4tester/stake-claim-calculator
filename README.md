@@ -1,8 +1,22 @@
-<h1 align="center">Stake claim calculator</h1>
+<h1 align="center">
+  Stake claim calculator
+</h1>
 
 <br>
 
-<p align="center">Rewards balance to claim rewards at:</p>
+<h3 align="center">
+  ✨ <a href="https://nogira.github.io/stake-claim-calculator/">Click here to calculate</a> ✨
+</h3>
+
+<br>
+
+<h2 align="center">
+  Formula
+</h2>
+  
+<p align="center">
+  Rewards balance to claim rewards at:
+</p>
 
 <br>
 
