@@ -4,7 +4,7 @@ import './App.css'
 
 import { Space, Select, Title, NumberInput, Paper } from '@mantine/core';
 
-import { rewardsToWithdrawAt } from './calculateRewards.js';
+import { rewardsToWithdrawAt } from './calculateRewards';
 
 
 function InputText(props: any) {
@@ -55,7 +55,7 @@ function App() {
       <Select 
         label="Blockchain Fees"
         value={chain}
-        onChange={setChain}
+        onChange={(val: string) => setChain(val)}
         data={["Custom","Cosmos", "Sentinel", "Terra"]}
       />
 

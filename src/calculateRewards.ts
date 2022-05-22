@@ -34,12 +34,10 @@ percentage, we use percentage * 3/4
 
 */
 
-export function rewardsToWithdrawAt(stakedBal, fee) {
+export function rewardsToWithdrawAt(stakedBal: number, fee: number) {
     const percentage = 3/4 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal;
-    console.log(percentage);
+    // console.log(percentage);
     const withdrawAt = stakedBal * percentage
-    console.log(withdrawAt);
+    // console.log(withdrawAt);
     return withdrawAt;
 }
-
-rewardsToWithdrawAt(5.09, 0.002847)
