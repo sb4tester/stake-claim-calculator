@@ -39,14 +39,14 @@ function App() {
   return (
     <Paper shadow="xs" p="md" className="App" >
       <Select 
-        label="Blockchain Fees"
+        label="blockchain fees"
         value={chain}
         onChange={(val: string) => setChain(val)}
         data={["Custom","Cosmos", "Sentinel"]}
       />
 
       <NumberInput
-        label="Claim Fee"
+        label="claim fee"
         precision={6}
         required
         value={claimFee}
@@ -54,7 +54,7 @@ function App() {
       />
 
       <NumberInput
-        label="Stake Fee"
+        label="stake fee"
         precision={6}
         required
         value={stakeFee}
@@ -62,7 +62,7 @@ function App() {
       />
 
       <NumberInput
-        label="Total Staked"
+        label="total staked"
         precision={6}
         required
         value={totalStaked}
@@ -71,7 +71,7 @@ function App() {
 
       <Space h={20} />
 
-      <Title order={4}>{"Claim At"}</Title>
+      <Title order={4}>{"claim at"}</Title>
       <Title order={1}>{claimAt}</Title>
       
       {/* <button type="button" onClick={() => setCount((count) => count + 1)}>
