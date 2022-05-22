@@ -46,7 +46,7 @@ const withdrawAt = 3/4 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee)));
 */
 
 export function rewardsToWithdrawAt(stakedBal: number, fee: number) {
-  const withdrawAt = 3/4 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee)));
+  const withdrawAt = 2/3 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee)));
   // console.log(withdrawAt);
   return withdrawAt;
 }
