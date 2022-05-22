@@ -51,10 +51,8 @@ finalBal = (stakedBal * (1 + (percentage / 2)) - fee) * (1 + (percentage / 2)) -
 
 <p>
   we are trying to maximize the compounding of interest by picking the perfect rewards balance to claim at, keeping in mind that fees will be taken from the rewards balance. if the fees are large compared to the rewards, it will take away most of the rewards, leaving little to compound. if the rewards are too large compared to the fees, you don't get enough compounding cycles.
-</p>
 
-<p>
-  when 2 compounds has higher returns than 1 compound, it means the percentage claimed at 1 compound is too high, as we were able to benefit from additional compounding by claiming at a smaller percentage. when 2 compounds is lower than 1 compound it can be good, as it indicates the claimed amount isn't too high, but intuitively, there is diminishing returns, as if you claim at too small amount, the fees will remove all your profit. a good inbetween point, at least for now, is when the formula for 1 compound equals the formula for 2 compounds:
+  when 2 compounds has higher returns than 1 compound, it means the percentage claimed at 1 compound is too high, as we were able to benefit from additional compounding by claiming at a smaller percentage. when 2 compounds is lower than 1 compound it can be good, as it indicates the claimed amount isn't too high, but intuitively, there is diminishing returns, as if you claim at too small an amount, the fees will remove all your profit. a good inbetween point, at least for now, is when the formula for 1 compound equals the formula for 2 compounds:
 </p>
 
 ```js
@@ -90,14 +88,12 @@ percentage = (fee + Math.sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal
 
 <p>
   the formula above gives a reasonably optimal percentage to claim rewards at, but we can take it a bit further
+
+  if we plug in the optimal percentage, as calculated above, into both the 1 compound formula and 2 compound formula from much earlier (equating time by using `percentage` for 1 compound, and `percentage / 2` for 2 compounds), they both give the same `finalBal` as expected (and thus returns over time).
+  
+  however, if we do a test run of **1)** 2 cycles at `percentage` per cycle, **2)** 3 cycles at `2/3 * percentage` per cycle, and **3)** 4 cycles at `percentage / 2` per cycle (all 3 tests equating time by adding up to a time of `2 * percentage`), you find that while 1) and 3) are roughly the same (having more cycles skews the results a bit from them being exactly the same, because ideally you should be calculating a new `%` for each cycle), 2) gives _EXTREMELY_ slightly higher returns. because the better returns are so minute, there is no need to further optimize, especially considering the increase in error as we try more and more cycles of the same percentage in a row (in the same vein as done above) in order to test optimizations.
 </p>
 
-<p>
-  if we plug in the optimal percentage, as calculated above, into both the 1 compound formula and 2 compound forumula from much earlier (equating time by using `percentage` for 1 compound, and `percentage / 2` for 2 compounds), they both give the same `finalBal` as expected (and thus returns over time).
-  
-  however, if we do a test run of **1)** 2 cycles at `percentage` per cycle, **2)** 3 cycles at `2/3 * percentage` per cycle, and **3)** 4 cycles at `percentage / 2` per cycle (all 3 tests equating time by adding up to a time of `2 * percentage`), you find that while 1) and 3) are roughly the same (having more cycles skews the results a bit from them being exactly the same, because ideally you should be calculating a new `%` for each cycle), 2) gives _EXTREMELY_ slightly higher returns.
- </p>
- 
 
 thus, we shall change our optimal percentage formula slightly by adding `2/3 *` to the start:
 ```js
