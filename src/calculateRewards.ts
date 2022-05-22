@@ -32,12 +32,21 @@ the percentage in between (percentage * 3/4), it gives slightly better returns,
 though EXTREMELY minimal improvement over 0 compound. thus instead of 0 compound
 percentage, we use percentage * 3/4
 
+we would then use this percentage to calculate the balance to withdrawl at:
+const percentage = 3/4 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal;
+const withdrawAt = stakedBal * percentage;
+
+however, we see when we combine the two calculations, we get the following:
+const withdrawAt = stakedBal * 3/4 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal;
+
+it is both multiplied by and divided by stakedBal, so instead we can remove 
+these to give:
+const withdrawAt = 3/4 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee)));
+
 */
 
 export function rewardsToWithdrawAt(stakedBal: number, fee: number) {
-    const percentage = 3/4 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal;
-    // console.log(percentage);
-    const withdrawAt = stakedBal * percentage
-    // console.log(withdrawAt);
-    return withdrawAt;
+  const withdrawAt = 3/4 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee)));
+  // console.log(withdrawAt);
+  return withdrawAt;
 }

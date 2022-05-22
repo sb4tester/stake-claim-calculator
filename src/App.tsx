@@ -1,23 +1,9 @@
 import { useState, useEffect } from 'react'
-import logo from './logo.svg'
 import './App.css'
 
 import { Space, Select, Title, NumberInput, Paper } from '@mantine/core';
 
 import { rewardsToWithdrawAt } from './calculateRewards';
-
-
-function InputText(props: any) {
-  const [value, setValue, label] = [props.val, props.set, props.label];
-  return (
-    <Select 
-      label={label}
-      value={value}
-      onChange={setValue}
-      data={[ "Cosmos", "Sentinel"]}
-    />
-  );
-}
 
 function App() {
   const [chain, setChain] = useState("Custom");
@@ -95,4 +81,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
