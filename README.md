@@ -40,11 +40,11 @@ $$
   - `percentage`: the optimal rewards balance at which to claim, measured as a percentage of `stakedBal`
 <br>
 
-- formula if **1** compound occured:
+formula if **1** compound occured:
 ```js
 finalBal = stakedBal * (1 + percentage) - fee
 ```
-- formula if **2** compounds occured:
+formula if **2** compounds occured:
 ```js
 finalBal = (stakedBal * (1 + (percentage / 2)) - fee) * (1 + (percentage / 2)) - fee
 ```
@@ -63,18 +63,18 @@ stakedBal * (1 + percentage) = (stakedBal * (1 + (percentage / 2)) - fee) * (1 +
 
 <br>
 
-<a href="https://www.wolframalpha.com/input?i=x+*+%281+%2B+z%29+%3D+%28x+*+%281+%2B+%28z+%2F+2%29%29+-+y%29+*+%281+%2B+%28z+%2F+2%29%29%2C+rearrange+for+z">Plug this into wolfram alpha</a> to solve for `percentage`:
+<a href="https://www.wolframalpha.com/input?i=x+*+%281+%2B+z%29+%3D+%28x+*+%281+%2B+%28z+%2F+2%29%29+-+y%29+*+%281+%2B+%28z+%2F+2%29%29%2C+rearrange+for+z">plug this into wolfram alpha</a> to solve for `percentage`:
 ```
 x * (1 + z) = (x * (1 + (z / 2)) - y) * (1 + (z / 2)), rearrange for z
 ```
-Result:
+result:
 ```
 z = (y ± sqrt(y(4x + y))) / x, x ≠ 0
 ```
 
 <br>
 
-This gives us:
+this gives us:
 ```js
 percentage = (fee ± sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal, stakedBal ≠ 0
 
