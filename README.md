@@ -91,7 +91,7 @@ percentage = (fee + Math.sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal
 
   if we plug in the optimal percentage, as calculated above, into both the 1 compound formula and 2 compound formula from much earlier (equating time by using `percentage` for 1 compound, and `percentage / 2` for 2 compounds), they both give the same `finalBal` as expected (and thus returns over time).
   
-  however, if we do a test run of **1)** 2 cycles at `percentage` per cycle, **2)** 3 cycles at `2/3 * percentage` per cycle, and **3)** 4 cycles at `percentage / 2` per cycle (all 3 tests equating time by adding up to a time of `2 * percentage`), you find that while 1) and 3) are roughly the same (having more cycles skews the results a bit from them being exactly the same, because ideally you should be calculating a new `%` for each cycle), 2) gives _EXTREMELY_ slightly higher returns. because the better returns are so minute, there is no need to further optimize, especially considering the increase in error as we try more and more cycles of the same percentage in a row (in the same vein as done above) in order to test optimizations.
+  however, if we do a test run of **1)** 2 cycles at `percentage` per cycle, **2)** 3 cycles at `2/3 * percentage` per cycle, and **3)** 4 cycles at `percentage / 2` per cycle (all 3 tests equating time by adding up to a time of `2 * percentage`), you find that while 1) and 3) are roughly the same (having more cycles skews the results a bit from them being _exactly_ the same, because ideally you should be calculating a new `%` for each cycle), 2) gives _EXTREMELY_ slightly higher returns. because the better returns are so minute, there is no need to further optimize, especially considering the increase in error as we try more and more cycles of the same percentage in a row (in the same vein as done above) in order to test optimizations.
 </p>
 
 
@@ -113,7 +113,7 @@ however, we see when we combine the two calculations, we get the following:
 withdrawAt = stakedBal * 2/3 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal;
 ```
 
-it is both multiplied by and divided by `stakedBal`, so instead we can remove these to give are absolute **FINAL** formula of:
+it is both multiplied by and divided by `stakedBal`, so instead we can remove these to give our absolute **FINAL** formula of:
 ```js
 withdrawAt = 2/3 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee)));
 ```
