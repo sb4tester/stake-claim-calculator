@@ -113,7 +113,7 @@ however, we see when we combine the two calculations, we get the following:
 withdrawAt = stakedBal * 2/3 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee))) / stakedBal;
 ```
 
-it is both multiplied by and divided by `stakedBal`, so instead we can remove these to give our absolute **FINAL** formula of:
+it is both multiplied by and divided by `stakedBal`, which cancel each other out, so instead we can remove these to give our _final_ formula of:
 ```js
 withdrawAt = 2/3 * (fee + Math.sqrt(fee * ((4 * stakedBal) + fee)));
 ```
